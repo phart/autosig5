@@ -708,10 +708,21 @@ def format_zpool(output, _, sig):
             sig.print_output("%s" % name)
             for child in children:
                 name = child["vdevName"]
-                state = child["diskState"]
-                model = child["diskModel"]
-                # location = child["diskLocation"]
-                sig.print_output("\t%s %s\t%s" % (name, state, model))
+                # deal with sub-mirrors in logs etc
+                if re.search("^mirror", name):
+                        sig.print_output("\t%s" % name)
+                        submir = child["children"]
+                        for subchild in submir:
+                            subname = subchild["vdevName"]
+                            substate = subchild["diskState"]
+                            submodel = subchild["diskModel"]
+                            #subloc = subchild["diskLocation"]
+                            sig.print_output("\t\t%s %s\t%s" % (subname, substate, submodel))
+                else:
+                    state = child["diskState"]
+                    model = child["diskModel"]
+                    # location = child["diskLocation"]
+                    sig.print_output("\t%s %s\t%s" % (name, state, model))
         except KeyError:
             # If we are here the pool is a simple stripe with no Protection
             name = vdev["vdevName"]
