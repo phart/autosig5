@@ -1,4 +1,4 @@
-{
+{                    
     "_version": "5.0.18",
     "enabled": true,
     "title": "Nexenta System Implementation Guide (SIG)",
@@ -631,7 +631,18 @@
             "fields": null,
             "formatter": null,
             "collector": null,
-            "sections": null
+            "sections":  [ 
+		{
+                    "enabled": true,
+                    "title": "NEX-14980 - Systems with over 256G RAM are not certified",
+                    "paragraph": "Configuring a large-memory system (>256G) with swap at 1/4 of RAM will cause ARC contention.  Systems should be configured with 256G (274877906944 bytes) of RAM at the most.",
+                    "method": "inventory/memory",
+                    "fields": null,
+                    "formatter": "properties",
+                    "collector": null,
+                    "sections": null
+		}
+            ]
         },
         {
             "enabled": true,
