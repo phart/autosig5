@@ -806,7 +806,7 @@ def validate_section(section):
     """
     # Check all required fields are present
     required = ["enabled", "title", "paragraph", "method", "fields",
-                "collector", "sections", "formatter"]
+                "postfilter", "collector", "sections", "formatter"]
     if (len(set(required) & set(section.keys())) != len(required)):
         logger.error("Section is missing required objects.")
         logger.error(section)
@@ -852,7 +852,7 @@ def exp_wildcard(wildcard, nef):
     return items
 
 
-def execute_api(nef, method, fields, formatcb, sig):
+def execute_api(nef, method, fields, postfilter, formatcb, sig):
     """
     Execute the API request and format the response using the format callback.
 
@@ -860,10 +860,11 @@ def execute_api(nef, method, fields, formatcb, sig):
         nef (NEFClient): NEF client object
         method (str): API method
         fields (list): A list of fields to query
+        postfilter (bool): are fields passed to API for pre-filtering or used after to limit output
         formatcb (function): The format callback function
         sig (Document): The SIG document object
     """
-    if fields is not None:
+    if (fields is not None) and (not postfilter):
         params = {"fields": ",".join(fields)}
     else:
         params = None
@@ -904,6 +905,7 @@ def build_section(section, level, nodes, sig):
     paragraph = section["paragraph"]
     method = section["method"]
     fields = section["fields"]
+    postfilter = section["postfilter"]
     sections = section["sections"]
     formatter = section["formatter"]
 
@@ -941,7 +943,7 @@ def build_section(section, level, nodes, sig):
         # Execute API call
         for hostname, nef in nodes:
             sig.print_hostname(hostname)
-            execute_api(nef, method, fields, formatcb, sig)
+            execute_api(nef, method, fields, postfilter, formatcb, sig)
 
     # Handle sections
     if sections is not None:

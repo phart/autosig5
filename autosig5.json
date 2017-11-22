@@ -5,6 +5,7 @@
     "paragraph": null,
     "method": null,
     "fields": null,
+    "postfilter": false,
     "formatter": null,
     "collector": null,
     "sections": [
@@ -14,6 +15,7 @@
             "paragraph": "The System Implementation Guide (SIG) is designed to document the implementation details of a Nexenta deployment. A signed SIG is a requirement of the \"Go-Live\" process which must be completed before a system is put into production. A completed and signed SIG denotes the completion of the installation process and the Professional Services engagement.",
             "method": null,
             "fields": null,
+            "postfilter": false,
             "formatter": null,
             "collector": null,
             "sections": null
@@ -24,6 +26,7 @@
             "paragraph": "Name: *Name*\n\nCustomer: *Customer*\n\nPS Case Number: *PS Case Number*\n\nDate: *Date*",
             "method": null,
             "fields": null,
+            "postfilter": false,
             "formatter": null,
             "collector": null,
             "sections": null
@@ -34,6 +37,7 @@
             "paragraph": null,
             "method": null,
             "fields": null,
+            "postfilter": false,
             "formatter": null,
             "collector": null,
             "sections": [
@@ -43,6 +47,7 @@
                     "paragraph": "Title: *Title*\n\nName: *Name*\n\nEmail: *Email*\n\nPhone: *Phone*",
                     "method": null,
                     "fields": null,
+                    "postfilter": false,
                     "formatter": null,
                     "collector": null,
                     "sections": null
@@ -53,6 +58,7 @@
                     "paragraph": "Title: *Title*\n\nName: *Name*\n\nEmail: *Email*\n\nPhone: *Phone*",
                     "method": null,
                     "fields": null,
+                    "postfilter": false,
                     "formatter": null,
                     "collector": null,
                     "sections": null
@@ -63,6 +69,7 @@
                     "paragraph": "Title: *Title*\n\nName: *Name*\n\nEmail: *Email*\n\nPhone: *Phone*",
                     "method": null,
                     "fields": null,
+                    "postfilter": false,
                     "formatter": null,
                     "collector": null,
                     "sections": null
@@ -75,6 +82,7 @@
             "paragraph": null,
             "method": null,
             "fields": null,
+            "postfilter": false,
             "formatter": null,
             "collector": null,
             "sections": [
@@ -84,6 +92,7 @@
                     "paragraph": "The NexentaStor GUID is generated at installation and is unique for each appliance. Nexenta or Nexenta partners use the GUID to generate permanent license keys. Temporary license keys can be obtained from http://www.nexenta.com/register-trial. A system still using a temporary license will not pass the Support Acceptance Check (SAC) for production usage.\n\nMANUALLY ENTER KEYS HERE UNTIL SUPPORT IS ADDED TO THE API",
                     "method": null,
                     "fields": null,
+                    "postfilter": false,
                     "formatter": null,
                     "collector": null,
                     "sections": null
@@ -94,6 +103,7 @@
                     "paragraph": "Installed NexentaStor release.",
                     "method": "software/packages",
                     "fields": ["product", "name", "version"],
+                    "postfilter": false,
                     "formatter": "collection",
                     "collector": null,
                     "sections": null
@@ -106,6 +116,7 @@
             "paragraph": null,
             "method": null,
             "fields": null,
+            "postfilter": false,
             "formatter": null,
             "collector": null,
             "sections": [
@@ -115,6 +126,7 @@
                     "paragraph": "The appliance mailer is used to communicate failures and weekly status reports.",
                     "method": "settings/properties?nameStartsWith=smtp",
                     "fields": null,
+                    "postfilter": false,
                     "formatter": "collectionprop",
                     "collector": null,
                     "sections": null
@@ -125,6 +137,7 @@
                     "paragraph": "The email address of the primary system administrator(s).",
                     "method": "settings/properties?nameStartsWith=system.administratorEmail",
                     "fields": null,
+                    "postfilter": false,
                     "formatter": "collectionprop",
                     "collector": null,
                     "sections": null
@@ -135,6 +148,7 @@
                     "paragraph": "Email address to send alerts to and alert subscriptions.",
                     "method": "settings/properties?nameStartsWith=alert",
                     "fields": null,
+                    "postfilter": false,
                     "formatter": "collectionprop",
                     "collector": null,
                     "sections": null
@@ -145,6 +159,7 @@
                     "paragraph": null,
                     "method": "services/ntp",
                     "fields": null,
+                    "postfilter": false,
                     "formatter": "properties",
                     "collector": null,
                     "sections": null
@@ -157,6 +172,7 @@
             "paragraph": null,
             "method": null,
             "fields": null,
+            "postfilter": false,
             "formatter": null,
             "collector": null,
             "sections": [
@@ -166,6 +182,7 @@
                     "paragraph": "Physical network interfaces.",
                     "method": "network/links",
                     "fields": ["name", "state", "speed", "class", "mtu"],
+                    "postfilter": false,
                     "formatter": "collection",
                     "collector": null,
                     "sections": null
@@ -176,6 +193,7 @@
                     "paragraph": "Network aggregates.",
                     "method": "network/aggregations",
                     "fields": null,
+                    "postfilter": false,
                     "formatter": "collection",
                     "collector": null,
                     "sections": null
@@ -186,6 +204,7 @@
                     "paragraph": "IPMP groups.",
                     "method": "network/ipmp",
                     "fields": null,
+                    "postfilter": false,
                     "formatter": "collection",
                     "collector": null,
                     "sections": null
@@ -196,6 +215,7 @@
                     "paragraph": "IP addresses.",
                     "method": "network/addresses",
                     "fields": ["name", "interface", "address", "addressType", "state"],
+                    "postfilter": false,
                     "formatter": "collection",
                     "collector": null,
                     "sections": null
@@ -206,6 +226,7 @@
                     "paragraph": null,
                     "method": null,
                     "fields": null,
+                    "postfilter": false,
                     "formatter": null,
                     "collector": null,
                     "sections": [
@@ -215,6 +236,7 @@
                             "paragraph": null,
                             "method": "network/nameservers",
                             "fields": null,
+                            "postfilter": false,
                             "formatter": "collection",
                             "collector": null,
                             "sections": null
@@ -225,6 +247,7 @@
                             "paragraph": null,
                             "method": "network/hosts",
                             "fields": null,
+                            "postfilter": false,
                             "formatter": "collection",
                             "collector": null,
                             "sections": null
@@ -237,6 +260,7 @@
                     "paragraph": null,
                     "method": "network/routes",
                     "fields": ["destination", "gateway", "static", "interface"],
+                    "postfilter": false,
                     "formatter": "collection",
                     "collector": null,
                     "sections": null
@@ -247,6 +271,7 @@
                     "paragraph": null,
                     "method": null,
                     "fields": null,
+                    "postfilter": false,
                     "formatter": null,
                     "collector": null,
                     "sections": null
@@ -259,6 +284,7 @@
             "paragraph": null,
             "method": null,
             "fields": null,
+            "postfilter": false,
             "formatter": null,
             "collector": null,
             "sections": [
@@ -268,6 +294,7 @@
                     "paragraph": null,
                     "method": "storage/pools",
                     "fields": ["poolName", "version", "storageCapacity", "storageAllocated"],
+                    "postfilter": false,
                     "formatter": "collection",
                     "collector": null,
                     "sections": null
@@ -278,6 +305,7 @@
                     "paragraph": null,
                     "method": "storage/pools/{pools}/topology",
                     "fields": null,
+                    "postfilter": false,
                     "formatter": "zpool",
                     "collector": null,
                     "sections": null
@@ -288,6 +316,7 @@
                     "paragraph": null,
                     "method": "storage/filesystems",
                     "fields": ["path", "bytesLogicalUsed", "bytesUsed", "mountPoint"],
+                    "postfilter": false,
                     "formatter": "collection",
                     "collector": null,
                     "sections": null
@@ -298,6 +327,7 @@
                     "paragraph": null,
                     "method": "storage/volumes",
                     "fields": ["path", "volumeSize", "bytesLogicalUsed", "bytesUsed"],
+                    "postfilter": false,
                     "formatter": "collection",
                     "collector": null,
                     "sections": null
@@ -310,6 +340,7 @@
             "paragraph": "File and block sharing services.",
             "method": null,
             "fields": null,
+            "postfilter": false,
             "formatter": null,
             "collector": null,
             "sections": [
@@ -319,6 +350,7 @@
                     "paragraph": null,
                     "method": null,
                     "fields": null,
+                    "postfilter": false,
                     "formatter": null,
                     "collector": null,
                     "sections": [
@@ -328,6 +360,7 @@
                             "paragraph": null,
                             "method": "nas/nfs",
                             "fields": ["filesystem", "mountPoint", "shareState"],
+                            "postfilter": false,
                             "collector": null,
                             "formatter": "collection",
                             "sections": null
@@ -338,6 +371,7 @@
                             "paragraph": "LDAP configuration.",
                             "method": null,
                             "fields": null,
+                            "postfilter": false,
                             "formatter": null,
                             "collector": null,
                             "sections": null
@@ -351,6 +385,7 @@
                     "formatter": null,
                     "method": null,
                     "fields": null,
+                    "postfilter": false,
                     "collector": null,
                     "sections": [
                         {
@@ -359,6 +394,7 @@
                             "paragraph": null,
                             "method": "nas/smb",
                             "fields": ["filesystem", "shareName", "shareState"],
+                            "postfilter": false,
                             "formatter": "collection",
                             "collector": null,
                             "sections": null
@@ -369,6 +405,7 @@
                             "paragraph": "Domain configuration.",
                             "method": "services/smb",
                             "fields": null,
+                            "postfilter": false,
                             "formatter": "properties",
                             "collector": null,
                             "sections": null
@@ -381,6 +418,7 @@
                     "paragraph": null,
                     "method": null,
                     "fields": null,
+                    "postfilter": false,
                     "formatter": null,
                     "collector": null,
                     "sections": [
@@ -390,6 +428,7 @@
                             "paragraph": null,
                             "method": null,
                             "fields": null,
+                            "postfilter": false,
                             "formatter": null,
                             "collector": null,
                             "sections": [
@@ -399,6 +438,7 @@
                                     "paragraph": null,
                                     "method": "san/iscsi/targets",
                                     "fields": null,
+                                    "postfilter": false,
                                     "formatter": "collection",
                                     "collector": null,
                                     "sections": null
@@ -409,6 +449,7 @@
                                     "paragraph": null,
                                     "method": "san/fibre/targets",
                                     "fields": null,
+                                    "postfilter": false,
                                     "formatter": "collection",
                                     "collector": null,
                                     "sections": null
@@ -421,6 +462,7 @@
                             "paragraph": null,
                             "method": "san/hostgroups",
                             "fields": null,
+                            "postfilter": false,
                             "formatter": "collection",
                             "collector": null,
                             "sections": null
@@ -431,6 +473,7 @@
                             "paragraph": null,
                             "method": "san/targetgroups",
                             "fields": null,
+                            "postfilter": false,
                             "formatter": "collection",
                             "collector": null,
                             "sections": null
@@ -441,6 +484,7 @@
                             "paragraph": null,
                             "method": "san/lunMappings",
                             "fields": null,
+                            "postfilter": false,
                             "formatter": "collection",
                             "collector": null,
                             "sections": null
@@ -455,6 +499,7 @@
             "paragraph": null,
             "method": null,
             "fields": null,
+            "postfilter": false,
             "formatter": null,
             "collector": null,
             "sections": [
@@ -464,6 +509,7 @@
                     "paragraph": "RSF-1 cluster configuration.",
                     "method": "rsf/clusters",
                     "fields": null,
+                    "postfilter": false,
                     "formatter": "rsf",
                     "collector": null,
                     "sections": null
@@ -476,6 +522,7 @@
             "paragraph": "NexentaStor supports High Performance Replication, snapshots and scrubs.",
             "method": null,
             "fields": null,
+            "postfilter": false,
             "formatter": null,
             "collector": null,
             "sections": [
@@ -485,6 +532,7 @@
                     "paragraph": "Trusted connections are required for data replication between appliances.",
                     "method": "node/binding",
                     "fields": null,
+                    "postfilter": false,
                     "formatter": "properties",
                     "collector": null,
                     "sections": null
@@ -495,6 +543,7 @@
                     "paragraph": "High Performance Replication (HPR) is a NexentaStor data and metadata replication and snapshot service which runs on a user defined schedule.",
                     "method": "hpr/services/{hpr}",
                     "fields": null,
+                    "postfilter": false,
                     "formatter": "properties",
                     "collector": null,
                     "sections": null
@@ -505,6 +554,7 @@
                     "paragraph": "Scrub periodically performs volume cleaning method. It is based on the ZFS capability of using end-to-end checksums to detect data corruption",
                     "method": "storage/pools/{pools}",
                     "fields": ["scrubSchedule"],
+                    "postfilter": false,
                     "formatter": "properties",
                     "collector": null,
                     "sections": null
@@ -517,6 +567,7 @@
             "paragraph": "The system hardware inventory.",
             "method": null,
             "fields": null,
+            "postfilter": false,
             "formatter": null,
             "collector": null,
             "sections": [
@@ -526,6 +577,7 @@
                     "paragraph": null,
                     "method": "inventory/cpus",
                     "fields": ["chipId", "model", "coreCount"],
+                    "postfilter": false,
                     "formatter": "collection",
                     "collector": null,
                     "sections": null
@@ -536,6 +588,7 @@
                     "paragraph": null,
                     "method": "inventory/disks",
                     "fields": ["logicalDevice", "model", "location"],
+                    "postfilter": false,
                     "formatter": "collection",
                     "collector": null,
                     "sections": null
@@ -546,6 +599,7 @@
                     "paragraph": null,
                     "method": "inventory/enclosures",
                     "fields": null,
+                    "postfilter": false,
                     "formatter": "collection",
                     "collector": null,
                     "sections": null
@@ -556,6 +610,7 @@
                     "paragraph": null,
                     "method": "inventory/hbas",
                     "fields": ["model", "adapterId", "portCount", "luCount"],
+                    "postfilter": false,
                     "formatter": "collection",
                     "collector": null,
                     "sections": null
@@ -566,6 +621,7 @@
                     "paragraph": null,
                     "method": "inventory/memory",
                     "fields": null,
+                    "postfilter": false,
                     "formatter": "properties",
                     "collector": null,
                     "sections": null
@@ -576,6 +632,7 @@
                     "paragraph": null,
                     "method": "inventory/nics",
                     "fields": null,
+                    "postfilter": false,
                     "formatter": "collection",
                     "collector": null,
                     "sections": null
@@ -586,6 +643,7 @@
                     "paragraph": null,
                     "method": "inventory/tapeDevices",
                     "fields": null,
+                    "postfilter": false,
                     "formatter": "collection",
                     "collector": null,
                     "sections": null
@@ -598,6 +656,7 @@
             "paragraph": null,
             "method": null,
             "fields": null,
+            "postfilter": false,
             "formatter": null,
             "collector": null,
             "sections": [
@@ -607,6 +666,7 @@
                     "paragraph": "NA",
                     "method": null,
                     "fields": null,
+                    "postfilter": false,
                     "formatter": null,
                     "collector": null,
                     "sections": null
@@ -617,6 +677,7 @@
                     "paragraph": "NA",
                     "method": null,
                     "fields": null,
+                    "postfilter": false,
                     "formatter": null,
                     "collector": null,
                     "sections": null
@@ -629,6 +690,7 @@
             "paragraph": "This sections documents any customer specific changes or release specific workarounds.",
             "method": null,
             "fields": null,
+            "postfilter": false,
             "formatter": null,
             "collector": null,
             "sections":  [ 
@@ -637,7 +699,8 @@
                     "title": "NEX-14980 - Systems with over 256G RAM are not certified",
                     "paragraph": "Configuring a large-memory system (>256G) with swap at 1/4 of RAM will cause ARC contention.  Systems should be configured with 256G (274877906944 bytes) of RAM at the most.",
                     "method": "inventory/memory",
-                    "fields": null,
+                    "fields": ["memorySize"],
+                    "postfilter": true,
                     "formatter": "properties",
                     "collector": null,
                     "sections": null
@@ -650,6 +713,7 @@
             "paragraph": "NA",
             "method": null,
             "fields": null,
+            "postfilter": false,
             "formatter": null,
             "collector": null,
             "sections": null
@@ -660,6 +724,7 @@
             "paragraph": "I agree that the installation success criteria have been met.",
             "method": null,
             "fields": null,
+            "postfilter": false,
             "formatter": null,
             "collector": null,
             "sections": [
@@ -669,6 +734,7 @@
                     "paragraph": "Name:\n\nDate:\n\nSignature:\n\n",
                     "method": null,
                     "fields": null,
+                    "postfilter": false,
                     "formatter": null,
                     "collector": null,
                     "sections": null
@@ -679,6 +745,7 @@
                     "paragraph": "Name:\n\nDate:\n\nSignature:\n\n",
                     "method": null,
                     "fields": null,
+                    "postfilter": false,
                     "formatter": null,
                     "collector": null,
                     "sections": null
@@ -689,6 +756,7 @@
                     "paragraph": "Name:\n\nDate:\n\nSignature:\n\n",
                     "method": null,
                     "fields": null,
+                    "postfilter": false,
                     "formatter": null,
                     "collector": null,
                     "sections": null
