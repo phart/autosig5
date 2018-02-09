@@ -448,9 +448,9 @@
                                     "title": "FC Targets",
                                     "paragraph": null,
                                     "method": "san/fibre/targets",
-                                    "fields": null,
+                                    "fields": ["location", "nodeWwn", "name", "hbaInfo", "physInfo"],
                                     "postfilter": false,
-                                    "formatter": "collection",
+                                    "formatter": "fctarget",
                                     "collector": null,
                                     "sections": null
                                 }

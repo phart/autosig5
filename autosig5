@@ -547,6 +547,61 @@ def format_collection(output, fields, sig):
 
     sig.print_table(table)
 
+def format_fctarget(output, fields, sig):
+    """
+    Format FC Targets 
+
+    This is needed because in a cluster, local targets have different fields than remote targets
+    modified from format_collection by pwh
+
+    Args:
+        output (dict): API output
+        fields (list): An ordered list of fields to display
+        sig (Document): The SIG document object
+    """
+    logger.debug("entering format_fctarget")
+    ignore = ["links", "href", "flags", "schema"]
+    collection = output["data"]
+    table = []
+    headers = []
+
+    # Do not continue if the list is empty
+    if not collection:
+        return
+
+    for c in collection:
+        for i in ignore:
+            if i in c.keys():
+                c.pop(i)
+        if not headers:
+            if fields:
+                headers = fields
+            else:
+                headers = c.keys()
+            table.append([h.capitalize() for h in headers])
+        # Build the table
+        row = []
+        if c["location"] == "local":
+            for h in headers:
+                row.append(str(c[h]))
+            table.append(row)
+        else:
+            # have to preserve the count of entries in a row
+            for h in headers:
+                if h == "location":
+                    row.append(str(c[h]))
+                elif h == "name":
+                    row.append(str(c[h]))
+                elif h == "nodeWwn":
+                    name = str(c["name"])
+                    dummy, wwn = name.split(".")
+                    row.append(wwn)
+                else:
+                    row.append('')
+            table.append(row)
+
+    sig.print_table(table)
+
 def format_collectionprop(output, fields, sig):
     """
     Format an API collection as a table.
@@ -680,7 +735,6 @@ def format_rsf(output, _, sig):
             sig.print_table(table)
     else:
         sig.print_string("None")
-
 
 def format_zpool(output, _, sig):
     """
