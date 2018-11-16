@@ -5,7 +5,7 @@ autosig5
 
 Generates the System Implementation Guide on NexentaStor 5.
 
-Copyright (c) 2016-2017  Nexenta Systems
+Copyright (c) 2016-2018  Nexenta Systems
 William Kettler <william.kettler@nexenta.com>
 Pete Hartman <pete.hartman@nexenta.com>
 Phillip Wagstrom <phillip.wagstrom@nexenta.com>
@@ -22,9 +22,9 @@ import pprint
 import json
 import time
 import getpass
+from urllib.parse import quote_plus, unquote_plus
 
-
-__version__ = "5.1.0"
+__version__ = "5.1.4"
 
 # Logger
 logger = logging.getLogger()
@@ -293,8 +293,9 @@ class NEFClient(object):
             "Content-Type": "application/json"
         }
 
+        # stop complaining about invalid certs
+        requests.packages.urllib3.disable_warnings()
         # Disable logging
-        #requests.packages.urllib3.disable_warnings()
         logging.getLogger("requests").setLevel(logging.WARNING)
         logging.getLogger("urllib3").setLevel(logging.WARNING)
 
@@ -559,7 +560,6 @@ def format_fctarget(output, fields, sig):
         fields (list): An ordered list of fields to display
         sig (Document): The SIG document object
     """
-    logger.debug("entering format_fctarget")
     ignore = ["links", "href", "flags", "schema"]
     collection = output["data"]
     table = []
@@ -901,7 +901,10 @@ def exp_wildcard(wildcard, nef):
         sys.exit(1)
 
     for i in output["data"]:
-        items.append(i[wildcards[wildcard]["field"]])
+        if wildcard == "hpr":
+            items.append(quote_plus(i[wildcards[wildcard]["field"]]))
+        else:
+            items.append(i[wildcards[wildcard]["field"]])
 
     return items
 
@@ -920,6 +923,10 @@ def execute_api(nef, method, fields, postfilter, formatcb, sig):
     """
     if (fields is not None) and (not postfilter):
         params = {"fields": ",".join(fields)}
+        # some collections will have more than 50 items (default limit), use very large number
+        # to attempt to get all of them
+        if id(formatcb) == id(format_collection):
+            params['limit'] = 2000
     else:
         params = None
     m = re.search("{(.+)}", method)
@@ -934,7 +941,8 @@ def execute_api(nef, method, fields, postfilter, formatcb, sig):
         wildcard = m.group(1)
         items = exp_wildcard(wildcard, nef)
         for i in items:
-            sig.print_paragraph(i)
+            # undo quoting of HPR name, banking on nothing else having URL encoding done to it
+            sig.print_paragraph(unquote_plus(i))
             try:
                 output = nef.get(re.sub("{(.+)}", i, method), params=params)
             except requests.exceptions.HTTPError as exc:
