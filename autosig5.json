@@ -101,10 +101,10 @@
                     "enabled": true,
                     "title": "Versions",
                     "paragraph": "Installed NexentaStor release.",
-                    "method": "software/packages",
-                    "fields": ["product", "name", "version"],
-                    "postfilter": false,
-                    "formatter": "collection",
+                    "method": "software/current",
+                    "fields": [ "version" ],
+                    "postfilter": true,
+                    "formatter": "properties",
                     "collector": null,
                     "sections": null
                 }
