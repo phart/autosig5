@@ -294,7 +294,8 @@ class NEFClient(object):
         }
 
         # stop complaining about invalid certs
-        requests.packages.urllib3.disable_warnings()
+        # comment out; 5.3-CP3 goes backwards in versions for "requests" module, and this disappears
+        #requests.packages.urllib3.disable_warnings()
         # Disable logging
         logging.getLogger("requests").setLevel(logging.WARNING)
         logging.getLogger("urllib3").setLevel(logging.WARNING)
